@@ -1,0 +1,85 @@
+<html>
+    <head>
+        <title>js30-1</title>
+        <link rel="stylesheet" href="./index.css">
+    </head>
+    <body>
+        <ul class="app-container">
+            <li>
+                <p>A</p>
+                <p>CLAP</p>
+            </li>
+            <li>
+                <p>S</p>
+                <p>HIHAT</p>
+            </li>
+            <li>
+                <p>D</p>
+                <p>KICK</p>
+            </li>
+            <li>
+                <p>F</p>
+                <p>OPENHAT</p>
+            </li>
+            <li>
+                <p>G</p>
+                <p>BOOM</p>
+            </li>
+            <li>
+                <p>H</p>
+                <p>RIDE</p>
+            </li>
+            <li>
+                <p>J</p>
+                <p>SNARE</p>
+            </li>
+            <li>
+                <p>K</p>
+                <p>TOM</p>
+            </li>
+            <li>
+                <p>L</p>
+                <p>TINK</p>
+            </li>
+        </ul>
+        <audio src="./sounds/clap.wav"></audio>
+        <audio src="./sounds/hihat.wav"></audio>
+        <audio src="./sounds/kick.wav"></audio>
+        <audio src="./sounds/openhat.wav"></audio>
+        <audio src="./sounds/boom.wav"></audio>
+        <audio src="./sounds/ride.wav"></audio>
+        <audio src="./sounds/snare.wav"></audio>
+        <audio src="./sounds/tom.wav"></audio>
+        <audio src="./sounds/tink.wav"></audio>
+    </body>
+    <script>
+        const ACTIVE_CLASS = 'active'
+        // map to sounds
+        const keyboardMap = {
+            65: 'clap',
+            83: 'hihat',
+            68: 'kick',
+            70: 'openhat',
+            71: 'boom',
+            72: 'ride',
+            74: 'snare',
+            75: 'tom',
+            76: 'tink'
+        }
+        // code map index 
+        const keyBoardArr = [ 65, 83, 68, 70, 71, 72, 74, 75, 76 ]
+        const soundsEl = document.getElementsByTagName('audio')
+        const liList = document.getElementsByTagName('li')
+        document.addEventListener('keydown', e => {
+            console.log(e, e.keyCode)
+            const index = keyBoardArr.indexOf(e.keyCode)
+            const a = document.querySelector('.active')
+            a && a.classList.remove(ACTIVE_CLASS)
+            liList[index].classList.add(ACTIVE_CLASS)
+                    soundsEl[index].currentTime = 0
+                    soundsEl[index].play()
+         
+        })
+   
+    </script>
+</html>
