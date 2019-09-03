@@ -73,12 +73,15 @@
         document.addEventListener('keydown', e => {
             console.log(e, e.keyCode)
             const index = keyBoardArr.indexOf(e.keyCode)
-            const a = document.querySelector('.active')
-            a && a.classList.remove(ACTIVE_CLASS)
             liList[index].classList.add(ACTIVE_CLASS)
-                    soundsEl[index].currentTime = 0
-                    soundsEl[index].play()
-         
+            soundsEl[index].currentTime = 0
+            soundsEl[index].play() 
+        })
+        Array.from(liList).forEach(i => {
+            i.addEventListener('transitionend', (e) => {
+                console.log('transition end')
+                i.classList.remove(ACTIVE_CLASS)
+            })
         })
    
     </script>
